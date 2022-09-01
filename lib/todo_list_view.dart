@@ -6,6 +6,7 @@ import 'upsert_todo_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+
 class Const {
   static const routeNameUpsertTodo = 'upsert-todo';
 }
@@ -25,7 +26,8 @@ class TodoListView extends StatelessWidget {
 
 class TodoList extends HookConsumerWidget {
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Todo'),
@@ -36,11 +38,13 @@ class TodoList extends HookConsumerWidget {
           ),
         ],
       ),
-      body: _buildList(),
+      body: _buildList(ref),
     );
+
   }
 
-  Widget _buildList() {
+
+  Widget _buildList(WidgetRef ref) {
     final viewModel = ref.watch(todoProvider);
     // viewModelからtodoList取得/監視
     final List<Todo> _todoList = viewModel.todoList;
