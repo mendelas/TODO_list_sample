@@ -5,6 +5,7 @@ import 'todo.dart';
 import 'upsert_todo_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:provider/provider.dart';
 
 
 class Const {
@@ -70,7 +71,8 @@ class TodoList extends HookConsumerWidget {
       },
       onDismissed: (DismissDirection direction) {
         // viewModelのtodoList要素を削除
-        context.read(todoProvider).deleteTodo(todo.id);
+        //context.read(todoProvider).deleteTodo(todo.id);
+        context.read().deleteTodo(todo.id);
         // ToastMessageを表示
         Fluttertoast.showToast(
           msg: '${todo.title}を削除しました',
